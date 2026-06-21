@@ -11,6 +11,11 @@ const Menu = {
         this.hardCard = document.getElementById("hardCard");
         this.errorCard = document.getElementById("errorCard");
 
+        this.dialog = document.getElementById("systemDialog");
+        this.dialogTitle = document.getElementById("dialogTitle");
+        this.dialogMessage = document.getElementById("dialogMessage");
+        this.dialogButton = document.getElementById("dialogButton");
+
         this.beginButton.addEventListener("click", () => {
 
             showScene("candidate");
@@ -44,13 +49,25 @@ const Menu = {
 
         this.hardCard.addEventListener("click", () => {
 
-            alert("Hard Mode will be implemented in the next milestone.");
+            this.showDialog(
+                "HARD MODE",
+                "Hard Mode will be implemented\nin the next milestone."
+            );
 
         });
 
         this.errorCard.addEventListener("click", () => {
 
-            alert("ERROR MODE LOCKED");
+            this.showDialog(
+                "ACCESS DENIED",
+                "Protocol EV-??\nAuthorization Required\n\nReason:\nHard Evaluation Incomplete"
+            );
+
+        });
+
+        this.dialogButton.addEventListener("click", () => {
+
+            this.hideDialog();
 
         });
 
@@ -107,45 +124,46 @@ const Menu = {
 
         card.style.pointerEvents = "none";
 
-        card.style.transition = "all .25s";
-
         card.style.background = "#320909";
-
         card.style.borderColor = "#ff5757";
 
         card.innerHTML = `
-
             <h3>ACCESS DENIED</h3>
-
             <p>${reason}</p>
-
         `;
 
         await Animation.sleep(1700);
 
         card.style.opacity = "0";
 
-        card.style.transform = "scale(.95)";
-
         await Animation.sleep(400);
-
-        card.innerHTML = `
-
-            <h3>PROTOCOL REMOVED</h3>
-
-            <p>This evaluation is no longer available.</p>
-
-        `;
 
         card.style.opacity = "1";
 
         card.style.background = "#071725";
-
-        card.style.borderStyle = "dashed";
-
         card.style.borderColor = "#284656";
-
+        card.style.borderStyle = "dashed";
         card.style.cursor = "not-allowed";
+
+        card.innerHTML = `
+            <h3>PROTOCOL REMOVED</h3>
+            <p>This evaluation is no longer available.</p>
+        `;
+
+    },
+
+    showDialog(title, message) {
+
+        this.dialogTitle.textContent = title;
+        this.dialogMessage.textContent = message;
+
+        this.dialog.classList.remove("hidden");
+
+    },
+
+    hideDialog() {
+
+        this.dialog.classList.add("hidden");
 
     }
 

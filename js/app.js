@@ -201,7 +201,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
         </div>
 
+                </div>   <!-- errorCard -->
+
+    </div>       <!-- difficultyCards -->
+
+    <div id="systemDialog" class="dialog hidden">
+
+        <div class="dialog-window">
+
+            <h3 id="dialogTitle">
+                ACCESS DENIED
+            </h3>
+
+            <p id="dialogMessage">
+                Placeholder
+            </p>
+
+            <button
+                id="dialogButton"
+                class="menu-button"
+            >
+                ACKNOWLEDGE
+            </button>
+
+        </div>
+
     </div>
+
+</div>           <!-- menu-container -->
 
 </section>
 
