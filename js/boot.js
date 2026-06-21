@@ -1,19 +1,55 @@
-window.addEventListener("load", () => {
+const bootLines = [
+    "Echo Protocol v1.0",
+    "",
+    "> Initializing...",
+    "> Loading Audio...",
+    "> Loading Assets...",
+    "> Synchronizing Resonance Database...",
+    "> Loading Voiceprints...",
+    "> Recognition Engine Ready...",
+    "> Opening Session..."
+];
 
-    const boot = document.getElementById("bootScreen");
-    const menu = document.getElementById("menuScreen");
+function startBoot(){
 
-    setTimeout(() => {
+    const boot = document.getElementById("boot");
 
-        boot.style.opacity = "0";
+    boot.innerHTML = `
+        <div id="terminal"></div>
+    `;
 
-        setTimeout(() => {
+    const terminal = document.getElementById("terminal");
 
-            boot.classList.remove("active");
-            menu.classList.add("active");
+    let index = 0;
 
-        },1200);
+    function nextLine(){
 
-    },5000);
+        if(index >= bootLines.length){
 
-});
+            setTimeout(()=>{
+
+                showScene("menu");
+
+            },1000);
+
+            return;
+
+        }
+
+        const line = document.createElement("p");
+
+        line.textContent = bootLines[index];
+
+        terminal.appendChild(line);
+
+        terminal.scrollTop = terminal.scrollHeight;
+
+        index++;
+
+        setTimeout(nextLine,450);
+
+    }
+
+    nextLine();
+
+}

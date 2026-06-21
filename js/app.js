@@ -50,12 +50,8 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     registerScene("menu",document.getElementById("menu"));
 
-    showScene("boot");
+showScene("boot");
 
-    setTimeout(()=>{
-
-        showScene("menu");
-
-    },3000);
+startBoot();
 
 });

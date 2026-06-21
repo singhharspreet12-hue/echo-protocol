@@ -1,74 +1,48 @@
-#bootScreen{
-background:black;
-overflow:hidden;
-}
+#boot{
 
-.logo{
+    justify-content:flex-start;
+    align-items:flex-start;
 
-font-family:Orbitron,sans-serif;
+    padding:50px;
 
-font-size:72px;
-
-letter-spacing:8px;
-
-opacity:0;
-
-animation:fadeLogo 3s forwards;
-
-text-shadow:
-0 0 20px cyan,
-0 0 50px cyan;
-}
-
-.madeby{
-
-margin-top:30px;
-
-font-size:20px;
-
-opacity:0;
-
-animation:fadeCredits 3s forwards;
-
-animation-delay:1s;
-
-color:#888;
-
-letter-spacing:3px;
-}
-
-@keyframes fadeLogo{
-
-0%{
-
-opacity:0;
-
-transform:scale(.8);
+    background:#020407;
 
 }
 
-100%{
+#terminal{
 
-opacity:1;
+    font-family:"JetBrains Mono",monospace;
 
-transform:scale(1);
+    color:#8ffcff;
 
-}
+    font-size:22px;
 
-}
-
-@keyframes fadeCredits{
-
-0%{
-
-opacity:0;
+    line-height:1.8;
 
 }
 
-100%{
+#terminal p{
 
-opacity:1;
+    opacity:0;
+
+    animation:fadeLine .25s forwards;
 
 }
+
+@keyframes fadeLine{
+
+    from{
+
+        opacity:0;
+        transform:translateY(8px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
 
 }
