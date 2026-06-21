@@ -1,16 +1,4 @@
-const bootLines = [
-    "Echo Protocol v1.0",
-    "",
-    "> Initializing...",
-    "> Loading Audio...",
-    "> Loading Assets...",
-    "> Synchronizing Resonance Database...",
-    "> Loading Voiceprints...",
-    "> Recognition Engine Ready...",
-    "> Opening Session..."
-];
-
-function startBoot(){
+async function startBoot() {
 
     const boot = document.getElementById("boot");
 
@@ -18,38 +6,45 @@ function startBoot(){
         <div id="terminal"></div>
     `;
 
-    const terminal = document.getElementById("terminal");
+    Terminal.init("terminal");
 
-    let index = 0;
+    for (const step of bootSequence) {
 
-    function nextLine(){
+        switch (step.type) {
 
-        if(index >= bootLines.length){
+            case "title":
+                await Terminal.print(step.text);
+                break;
 
-            setTimeout(()=>{
+            case "subtitle":
+                await Terminal.print(step.text);
+                break;
 
-                showScene("menu");
+            case "blank":
+                await Terminal.print("");
+                break;
 
-            },1000);
+            case "ok":
+                await Terminal.ok(step.text);
+                break;
 
-            return;
+            case "warn":
+                await Terminal.warn(step.text);
+                break;
 
+            case "error":
+                await Terminal.error(step.text);
+                break;
+
+            case "pause":
+                await Terminal.pause(step.time);
+                break;
         }
-
-        const line = document.createElement("p");
-
-        line.textContent = bootLines[index];
-
-        terminal.appendChild(line);
-
-        terminal.scrollTop = terminal.scrollHeight;
-
-        index++;
-
-        setTimeout(nextLine,450);
 
     }
 
-    nextLine();
+    await Terminal.pause(1000);
+
+    showScene("menu");
 
 }
