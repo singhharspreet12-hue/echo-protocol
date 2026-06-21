@@ -39,12 +39,18 @@ async function startBoot() {
             case "pause":
                 await Terminal.pause(step.time);
                 break;
+
         }
 
     }
 
-    await Terminal.pause(1000);
+    // Keep the blinking cursor visible after boot
+    Terminal.showCursor();
 
+    // Dramatic pause before takeover
+    await Terminal.pause(2000);
+
+    // The actual takeover will happen in File 2
     showScene("menu");
 
 }

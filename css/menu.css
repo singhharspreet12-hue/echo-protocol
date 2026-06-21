@@ -1,83 +1,377 @@
-#menuScreen{
-background:linear-gradient(180deg,#061321,#01060d);
-}
+#logo,
+#menu,
+#candidate,
+#difficulty{
 
-.menuBox{
+    background:
+    radial-gradient(circle at top,#10253a 0%,#04080d 45%,#000000 100%);
 
-width:520px;
-max-width:90vw;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-padding:50px;
+    overflow:hidden;
 
-display:flex;
-flex-direction:column;
-gap:18px;
+    position:relative;
 
-background:rgba(0,0,0,.35);
-
-border-radius:20px;
-
-backdrop-filter:blur(18px);
-
-border:1px solid rgba(255,255,255,.08);
-
-box-shadow:
-0 0 40px rgba(0,255,255,.15);
+    font-family:"JetBrains Mono",monospace;
 
 }
 
-.menuBox h1{
+/* ---------- PANELS ---------- */
 
-text-align:center;
+.logo-container,
+.menu-container{
 
-font-family:Orbitron,sans-serif;
+    width:760px;
+    max-width:92vw;
 
-font-size:42px;
+    background:rgba(5,17,27,.88);
 
-margin-bottom:10px;
+    border:1px solid rgba(72,198,255,.45);
 
-}
+    border-radius:4px;
 
-.menuBox input{
+    padding:45px;
 
-height:55px;
+    box-shadow:
+        0 0 35px rgba(45,160,220,.12);
 
-padding:0 16px;
+    display:flex;
+    flex-direction:column;
 
-font-size:18px;
-
-border:none;
-
-border-radius:10px;
-
-background:#111;
-
-color:white;
+    align-items:center;
 
 }
 
-.menuBox button{
+/* ---------- TITLES ---------- */
 
-height:55px;
+.logo-title,
+.menu-title{
 
-font-size:18px;
+    font-family:"Orbitron",sans-serif;
 
-border:none;
+    font-size:46px;
 
-border-radius:10px;
+    letter-spacing:8px;
 
-background:#20b7ff;
+    color:#e4fbff;
 
-color:white;
+    margin:0;
 
-transition:.2s;
+    text-align:center;
+
+    text-transform:uppercase;
 
 }
 
-.menuBox button:hover{
+.logo-subtitle{
 
-transform:translateY(-2px);
+    margin-top:10px;
+    margin-bottom:35px;
 
-background:#39c3ff;
+    color:#79a7be;
+
+    font-size:14px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+}
+
+/* ---------- BUTTONS ---------- */
+
+.menu-button{
+
+    width:100%;
+
+    height:62px;
+
+    margin-top:14px;
+
+    background:#071a28;
+
+    color:#dffaff;
+
+    border:1px solid #3bb9f2;
+
+    border-radius:4px;
+
+    font-size:17px;
+
+    letter-spacing:2px;
+
+    cursor:pointer;
+
+    transition:
+        transform .18s,
+        background .18s,
+        border-color .18s,
+        box-shadow .18s;
+
+}
+
+.menu-button:hover{
+
+    transform:translateY(-2px);
+
+    background:#0d2940;
+
+    border-color:#7be5ff;
+
+    box-shadow:
+        0 0 18px rgba(70,210,255,.30);
+
+}
+
+.menu-button:active{
+
+    transform:translateY(0);
+
+}
+
+/* ---------- INPUT ---------- */
+
+.candidate-input{
+
+    width:100%;
+
+    height:58px;
+
+    margin-top:25px;
+
+    padding:0 18px;
+
+    background:#05131d;
+
+    border:1px solid #39b4ef;
+
+    border-radius:4px;
+
+    color:#dffaff;
+
+    font-size:18px;
+
+    outline:none;
+
+}
+
+.candidate-input:focus{
+
+    border-color:#81ecff;
+
+    box-shadow:
+        0 0 15px rgba(70,210,255,.25);
+
+}
+
+/* ---------- FOOTER ---------- */
+
+.menu-container::after{
+
+    content:"MOSAI-OS v2.14                      AUTHORIZED TERMINAL";
+
+    margin-top:35px;
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    color:#658ca2;
+
+    font-size:12px;
+
+    letter-spacing:1px;
+
+    border-top:1px solid rgba(90,180,220,.18);
+
+    padding-top:18px;
+
+    white-space:pre;
+
+}
+
+/* ---------- HIDDEN ---------- */
+
+.hidden{
+
+    display:none !important;
+
+}
+.candidate-label{
+
+    width:100%;
+
+    margin-top:10px;
+
+    margin-bottom:10px;
+
+    color:#79a7be;
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+}
+
+.candidate-status{
+
+    width:100%;
+
+    margin-top:22px;
+
+    margin-bottom:10px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    border-top:1px solid rgba(90,180,220,.18);
+
+    border-bottom:1px solid rgba(90,180,220,.18);
+
+    padding:14px 0;
+
+    color:#8fb4c6;
+
+    font-size:14px;
+
+}
+
+.candidate-status strong{
+
+    color:#dffaff;
+
+    font-weight:600;
+
+}
+/* =======================================
+   DIFFICULTY CARDS
+======================================= */
+
+#difficultyCards{
+
+    width:100%;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:18px;
+
+    margin-top:30px;
+
+}
+
+.difficulty-card{
+
+    position:relative;
+
+    padding:24px 28px;
+
+    background:#071725;
+
+    border:1px solid rgba(65,190,255,.45);
+
+    border-radius:4px;
+
+    cursor:pointer;
+
+    transition:
+        transform .18s,
+        border-color .18s,
+        box-shadow .18s,
+        background .18s;
+
+}
+
+.difficulty-card:hover{
+
+    transform:translateY(-3px);
+
+    border-color:#7ce8ff;
+
+    background:#0b2233;
+
+    box-shadow:
+        0 0 18px rgba(70,210,255,.25);
+
+}
+
+.difficulty-id{
+
+    position:absolute;
+
+    top:16px;
+
+    right:20px;
+
+    color:#5f8da3;
+
+    font-size:12px;
+
+    letter-spacing:2px;
+
+}
+
+.difficulty-card h3{
+
+    margin:0;
+
+    color:#e8fbff;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:24px;
+
+    letter-spacing:4px;
+
+}
+
+.difficulty-card p{
+
+    margin:8px 0;
+
+    color:#9fc5d7;
+
+    font-size:15px;
+
+}
+
+.difficulty-card span{
+
+    display:block;
+
+    margin-top:18px;
+
+    color:#4fe0ff;
+
+    font-size:13px;
+
+    letter-spacing:1px;
+
+}
+
+.locked{
+
+    opacity:.65;
+
+}
+
+.locked:hover{
+
+    transform:none;
+
+    cursor:not-allowed;
+
+    border-color:#555;
+
+    box-shadow:none;
 
 }
