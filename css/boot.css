@@ -1,0 +1,74 @@
+#bootScreen{
+background:black;
+overflow:hidden;
+}
+
+.logo{
+
+font-family:Orbitron,sans-serif;
+
+font-size:72px;
+
+letter-spacing:8px;
+
+opacity:0;
+
+animation:fadeLogo 3s forwards;
+
+text-shadow:
+0 0 20px cyan,
+0 0 50px cyan;
+}
+
+.madeby{
+
+margin-top:30px;
+
+font-size:20px;
+
+opacity:0;
+
+animation:fadeCredits 3s forwards;
+
+animation-delay:1s;
+
+color:#888;
+
+letter-spacing:3px;
+}
+
+@keyframes fadeLogo{
+
+0%{
+
+opacity:0;
+
+transform:scale(.8);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
+
+@keyframes fadeCredits{
+
+0%{
+
+opacity:0;
+
+}
+
+100%{
+
+opacity:1;
+
+}
+
+}
