@@ -46,3 +46,55 @@
     }
 
 }
+#terminal{
+
+    width:100%;
+    height:100%;
+
+    overflow-y:auto;
+
+    font-family:"JetBrains Mono",monospace;
+
+    font-size:21px;
+
+    line-height:1.8;
+
+    color:#d8ecff;
+
+}
+
+.terminal-ok{
+
+    color:#4fd7ff;
+
+}
+
+.terminal-warn{
+
+    color:#ffd74f;
+
+}
+
+.terminal-error{
+
+    color:#ff5c5c;
+
+}
+
+.terminal-cursor{
+
+    display:inline-block;
+
+    animation:blink .9s infinite;
+
+}
+
+@keyframes blink{
+
+    50%{
+
+        opacity:0;
+
+    }
+
+}
