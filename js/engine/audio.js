@@ -16,7 +16,7 @@ const Audio = {
 
     currentVoice: null,
 
-currentMusic: null,
+    currentMusic: null,
 
     playMusic(file) {
 
@@ -91,12 +91,13 @@ this.music.volume = this.getCurrentMusicVolume();
     );
 
     const volume =
-
     Storage.get("sfxVolume") ?? 100;
 
-sound.volume =
+const baseVolume =
+    this.sfxVolume ?? 0.7;
 
-    (volume / 100) * this.sfxVolume;
+sound.volume =
+    (volume / 100) * baseVolume;
 
     sound.play().catch(() => {});
 
@@ -131,12 +132,13 @@ playVoice(file, folder = "voice") {
     );
 
     const volume =
-
     Storage.get("sfxVolume") ?? 100;
 
-voice.volume =
+const baseVolume =
+    this.sfxVolume ?? 0.7;
 
-    (volume / 100) * this.sfxVolume;
+voice.volume =
+    (volume / 100) * baseVolume;
 
     this.currentVoice = voice;
 
