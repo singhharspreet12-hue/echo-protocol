@@ -53,4 +53,6 @@ async function startBoot() {
     // The actual takeover will happen in File 2
     showScene("menu");
 
+    Audio.fadeInMusic("Main Menu");
+
 }
