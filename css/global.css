@@ -22,42 +22,93 @@ html,
 body{
 
     width:100%;
-
     height:100%;
-
     overflow:hidden;
-
     background:var(--bg);
-
     color:var(--text);
-
     font-family:Inter,sans-serif;
 
 }
 
+#app::before{
+
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    opacity:.22;
+
+    background-image:
+        linear-gradient(rgba(80,180,255,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(80,180,255,.08) 1px, transparent 1px);
+
+    background-size:64px 64px;
+
+    animation:gridMove 35s linear infinite;
+
+}
+
+@keyframes gridMove{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(64px);
+    }
+
+}
+
 #app{
-
     width:100vw;
-
     height:100vh;
-
     position:relative;
+}
 
+#app::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    z-index:1;
+    opacity:.06;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0px,
+            transparent 3px,
+            rgba(255,255,255,.35) 4px
+        );
+
+    animation:scanMove 7s linear infinite;
+}
+
+@keyframes scanMove{
+    from{
+        transform:translateY(-100%);
+    }
+
+    to{
+        transform:translateY(100%);
+    }
 }
 
 .scene{
 
     position:absolute;
 
-    inset:0;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100vh;
 
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
-    flex-direction:column;
 
 }
 
@@ -66,7 +117,7 @@ body{
     display:none;
 
 }
-}
+
 #screenFlash{
 
     position:fixed;
@@ -135,4 +186,22 @@ body{
 
     }
 
+}
+
+html{
+
+    font-size:clamp(13px,0.9vw,16px);
+
+}
+
+html {
+    overflow-y: scroll;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+html {
+    scrollbar-gutter: stable;
 }
