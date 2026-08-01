@@ -93,6 +93,12 @@ this.music.volume = this.getCurrentMusicVolume();
     const volume =
     Storage.get("sfxVolume") ?? 100;
 
+console.log("playSFX()");
+console.log("Storage sfxVolume:", Storage.get("sfxVolume"));
+console.log("typeof:", typeof Storage.get("sfxVolume"));
+console.log("Audio.sfxVolume:", this.sfxVolume);
+console.log("Calculated:", (Number(Storage.get("sfxVolume")) / 100) * this.sfxVolume);
+
 const baseVolume =
     this.sfxVolume ?? 0.7;
 
