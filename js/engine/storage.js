@@ -22,6 +22,8 @@ musicVolume: 35,
 
 sfxEnabled: true,
 
+sfxVolume: 100,
+
 },
 
     load() {
