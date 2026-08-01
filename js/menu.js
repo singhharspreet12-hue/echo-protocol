@@ -1021,13 +1021,18 @@ updateFullscreenButton() {
 
 updateMusicSlider(percent){
 
-    percent = Math.max(
+    percent = Number(percent);
 
-        0,
+if (!Number.isFinite(percent)) {
 
-        Math.min(100, percent)
+    percent = 35;
 
-    );
+}
+
+percent = Math.max(
+    0,
+    Math.min(100, percent)
+);
 
     this.musicSliderFill.style.width =
 
@@ -1060,14 +1065,6 @@ if (Audio.music) {
 },
 
 updateSfxSlider(percent){
-
-    percent = Number(percent);
-
-if (!Number.isFinite(percent)) {
-
-    percent = 35;
-
-}
 
 percent = Number(percent);
 
