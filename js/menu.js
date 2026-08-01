@@ -702,25 +702,21 @@ if (briefingButton) {
 
 this.updateFullscreenButton();
 
-const savedMusicVolume =
+const savedMusicVolume = Number(Storage.get("musicVolume"));
 
-    Storage.get("musicVolume");
+this.updateMusicSlider(
+    Number.isFinite(savedMusicVolume)
+        ? savedMusicVolume
+        : 35
+);
 
-if (savedMusicVolume !== null) {
+const savedSfxVolume = Number(Storage.get("sfxVolume"));
 
-    this.updateMusicSlider(savedMusicVolume);
-
-}
-
-const savedSfxVolume =
-
-    Storage.get("sfxVolume");
-
-if (savedSfxVolume !== null) {
-
-    this.updateSfxSlider(savedSfxVolume);
-
-}
+this.updateSfxSlider(
+    Number.isFinite(savedSfxVolume)
+        ? savedSfxVolume
+        : 100
+);
 
 this.startHud();
 
@@ -1065,13 +1061,26 @@ if (Audio.music) {
 
 updateSfxSlider(percent){
 
-    percent = Math.max(
+    percent = Number(percent);
 
-        0,
+if (!Number.isFinite(percent)) {
 
-        Math.min(100, percent)
+    percent = 35;
 
-    );
+}
+
+percent = Number(percent);
+
+if (!Number.isFinite(percent)) {
+
+    percent = 100;
+
+}
+
+percent = Math.max(
+    0,
+    Math.min(100, percent)
+);
 
     this.sfxSliderFill.style.width =
 
